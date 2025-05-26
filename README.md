@@ -25,5 +25,5 @@
 
 1. Clone or download this repository:
    ```bash
-   git clone https://github.com/Tech2024ish/myGitHubProjects.git
+   git clone https://github.com/Tech2024ish/webTechnology.git
 # webTechnology
