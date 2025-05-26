@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dev Academy</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      color: #333;
+    }
+    header {
+      background-color: #2c3e50;
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
+    nav {
+      background-color: #34495e;
+      text-align: center;
+      padding: 10px 0;
+    }
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+    }
+    section {
+      padding: 40px 20px;
+    }
+    .course {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      margin-bottom: 50px;
+      padding: 20px;
+    }
+    .course-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .course-header img {
+      width: 80px;
+      height: 80px;
+      margin-right: 20px;
+    }
+    .course-header h3 {
+      margin: 0;
+    }
+    .tabs {
+      display: flex;
+      margin-bottom: 20px;
+      cursor: pointer;
+    }
+    .tab {
+      flex: 1;
+      padding: 10px;
+      background-color: #ecf0f1;
+      text-align: center;
+      border-radius: 5px 5px 0 0;
+      font-weight: bold;
+      user-select: none;
+      transition: background-color 0.3s ease;
+    }
+    .tab.active {
+      background-color: #2c3e50;
+      color: white;
+    }
+    .tab-content {
+      background-color: white;
+      border: 1px solid #ccc;
+      border-top: none;
+      padding: 20px;
+      border-radius: 0 0 10px 10px;
+    }
+    form {
+      max-width: 400px;
+      margin: auto;
+    }
+    form input {
+      width: 100%;
+      padding: 8px;
+      margin: 8px 0 4px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+    form button {
+      width: 100%;
+      padding: 10px;
+      background-color: #2c3e50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+    .error {
+      color: red;
+      font-size: 13px;
+      margin-bottom: 10px;
+      display: none;
+    }
+    .success {
+      color: green;
+      font-size: 14px;
+      margin-top: 10px;
+      text-align: center;
+      display: none;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #2c3e50;
+      color: white;
+      margin-top: 50px;
+    }
+    @media (max-width: 768px) {
+      nav a {
+        display: block;
+        margin: 10px 0;
+      }
+      .course-header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      .course-header img {
+        margin-bottom: 10px;
+      }
+    }
+
+    form {
+      background: white;
+      padding: 20px;
+      max-width: 500px;
+      margin: auto;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    form input,
+    form textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    form button {
+      background-color: #2c3e50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Welcome to Dev Academy</h1>
+    <p>Learn to code like a pro – Frontend & Backend!</p>
+  </header>
+
+  <nav>
+    <a href="#about">About</a>
+    <a href="#courses">Courses</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section id="about">
+    <h2>About Dev Academy</h2>
+    <p>Dev Academy is a modern coding school offering intensive programs for aspiring web developers. We focus on practical, real-world coding skills in Frontend, Backend, and Full-stack development.</p>
+  </section>
+
+  <section id="courses">
+    <h2>Our Courses & User Access</h2>
+
+    <!-- Course: Frontend -->
+    <div class="course" data-course="frontend">
+      <div class="course-header">
+        <img src="https://img.icons8.com/color/100/html-5--v1.png" alt="Frontend Development" />
+        <h3>Frontend Development</h3>
+      </div>
+      <div class="tabs">
+        <div class="tab active" data-tab="register">Register</div>
+        <div class="tab" data-tab="login">Login</div>
+      </div>
+      <div class="tab-content">
+        <form class="register-form" onsubmit="handleCourseRegister(event, 'frontend')">
+          <input type="text" name="fullname" placeholder="Full Name" />
+          <div class="error"></div>
+
+          <input type="email" name="email" placeholder="Email" />
+          <div class="error"></div>
+
+          <input type="password" name="password" placeholder="Password" />
+          <div class="error"></div>
+
+          <button type="submit">Register</button>
+          <div class="success"></div>
+        </form>
+        <form class="login-form" onsubmit="handleCourseLogin(event, 'frontend')" style="display:none;">
+          <input type="email" name="email" placeholder="Email" />
+          <div class="error"></div>
+
+          <input type="password" name="password" placeholder="Password" />
+          <div class="error"></div>
+
+          <button type="submit">Login</button>
+          <div class="success"></div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Course: Backend -->
+    <div class="course" data-course="backend">
+      <div class="course-header">
+        <img src="https://img.icons8.com/color/100/nodejs.png" alt="Backend Development" />
+        <h3>Backend Development</h3>
+      </div>
+      <div class="tabs">
+        <div class="tab active" data-tab="register">Register</div>
+        <div class="tab" data-tab="login">Login</div>
+      </div>
+      <div class="tab-content">
+        <form class="register-form" onsubmit="handleCourseRegister(event, 'backend')">
+          <input type="text" name="fullname" placeholder="Full Name" />
+          <div class="error"></div>
+
+          <input type="email" name="email" placeholder="Email" />
+          <div class="error"></div>
+
+          <input type="password" name="password" placeholder="Password" />
+          <div class="error"></div>
+
+          <button type="submit">Register</button>
+          <div class="success"></div>
+        </form>
+        <form class="login-form" onsubmit="handleCourseLogin(event, 'backend')" style="display:none;">
+          <input type="email" name="email" placeholder="Email" />
+          <div class="error"></div>
+
+          <input type="password" name="password" placeholder="Password" />
+          <div class="error"></div>
+
+          <button type="submit">Login</button>
+          <div class="success"></div>
+        </form>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <form id="contactForm" onsubmit="handleSubmit(event)">
+      <input type="text" id="name" placeholder="Your Name">
+      <div id="nameError" class="error">Please enter your name.</div>
+
+      <input type="email" id="email" placeholder="Your Email">
+      <div id="emailError" class="error">Please enter a valid email.</div>
+
+      <textarea id="message" placeholder="Your Message" rows="5"></textarea>
+      <div id="messageError" class="error">Please enter your message.</div>
+
+      <button type="submit">Send</button>
+      <div id="successMessage" class="success">Thank you! Your message has been sent.</div>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Dev Academy. All rights reserved.</p>
+    <p>This Website designed and developed by Goslish. A Computer Science student in UR-CST.</p>
+    <p>&phone; +250 783 326 529</p>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.course').forEach(course => {
+      const tabs = course.querySelectorAll('.tab');
+      const registerForm = course.querySelector('.register-form');
+      const loginForm = course.querySelector('.login-form');
+
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          tabs.forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+
+          if (tab.dataset.tab === 'register') {
+            registerForm.style.display = 'block';
+            loginForm.style.display = 'none';
+            clearFormMessages(registerForm);
+            clearFormMessages(loginForm);
+          } else {
+            registerForm.style.display = 'none';
+            loginForm.style.display = 'block';
+            clearFormMessages(registerForm);
+            clearFormMessages(loginForm);
+          }
+        });
+      });
+    });
+
+    function clearFormMessages(form) {
+      form.querySelectorAll('.error').forEach(e => {
+        e.style.display = 'none';
+        e.textContent = '';
+      });
+      const success = form.querySelector('.success');
+      if(success) {
+        success.style.display = 'none';
+        success.textContent = '';
+      }
+    }
+
+    function validateRegisterForm(form) {
+      let valid = true;
+      const fullname = form.fullname.value.trim();
+      const email = form.email.value.trim();
+      const password = form.password.value.trim();
+
+      clearFormMessages(form);
+
+      if(fullname === '') {
+        showError(form.fullname, "Full Name is required.");
+        valid = false;
+      }
+      if(email === '') {
+        showError(form.email, "Email is required.");
+        valid = false;
+      } else if(!validateEmail(email)) {
+        showError(form.email, "Email is not valid.");
+        valid = false;
+      }
+      if(password === '') {
+        showError(form.password, "Password is required.");
+        valid = false;
+      } else if(password.length < 6) {
+        showError(form.password, "Password must be at least 6 characters.");
+        valid = false;
+      }
+      return valid;
+    }
+
+    function validateLoginForm(form) {
+      let valid = true;
+      const email = form.email.value.trim();
+      const password = form.password.value.trim();
+
+      clearFormMessages(form);
+
+      if(email === '') {
+        showError(form.email, "Email is required.");
+        valid = false;
+      } else if(!validateEmail(email)) {
+        showError(form.email, "Email is not valid.");
+        valid = false;
+      }
+      if(password === '') {
+        showError(form.password, "Password is required.");
+        valid = false;
+      }
+      return valid;
+    }
+
+    function showError(input, message) {
+      const errorDiv = input.nextElementSibling;
+      errorDiv.textContent = message;
+      errorDiv.style.display = 'block';
+    }
+
+    function validateEmail(email) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+    function getUsers(course) {
+      const usersJSON = localStorage.getItem('devacademy_' + course);
+      return usersJSON ? JSON.parse(usersJSON) : [];
+    }
+
+    function saveUsers(course, users) {
+      localStorage.setItem('devacademy_' + course, JSON.stringify(users));
+    }
+
+    function handleCourseRegister(event, course) {
+      event.preventDefault();
+      const form = event.target;
+      if(!validateRegisterForm(form)) return;
+
+      const fullname = form.fullname.value.trim();
+      const email = form.email.value.trim();
+      const password = form.password.value.trim();
+
+      let users = getUsers(course);
+
+      if(users.some(u => u.email.toLowerCase() === email.toLowerCase())) {
+        showError(form.email, "Email is already registered.");
+        return;
+      }
+
+      users.push({ fullname, email, password });
+      saveUsers(course, users);
+
+      clearFormMessages(form);
+      form.reset();
+      const success = form.querySelector('.success');
+      success.textContent = "Registration successful! You can now log in.";
+      success.style.display = 'block';
+    }
+
+    function handleCourseLogin(event, course) {
+      event.preventDefault();
+      const form = event.target;
+      if(!validateLoginForm(form)) return;
+
+      const email = form.email.value.trim();
+      const password = form.password.value.trim();
+
+      const users = getUsers(course);
+      const user = users.find(u => u.email.toLowerCase() === email.toLowerCase());
+
+      clearFormMessages(form);
+
+      if(!user) {
+        showError(form.email, "Email not found. Please register first.");
+        return;
+      }
+
+      if(user.password !== password) {
+        showError(form.password, "Incorrect password.");
+        return;
+      }
+
+      form.reset();
+      const success = form.querySelector('.success');
+      success.textContent = `Welcome back, ${user.fullname}! You are logged into the ${course} course.`;
+      success.style.display = 'block';
+    }
+
+    function handleSubmit(event) {
+      event.preventDefault();
+
+      let hasError = false;
+      document.querySelectorAll('.error').forEach(el => el.style.display = 'none');
+      document.getElementById('successMessage').style.display = 'none';
+
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      if (!name) {
+        document.getElementById('nameError').style.display = 'block';
+        hasError = true;
+      }
+
+      if (!email || !/^\S+@\S+\.\S+$/.test(email)) {
+        document.getElementById('emailError').style.display = 'block';
+        hasError = true;
+      }
+
+      if (!message) {
+        document.getElementById('messageError').style.display = 'block';
+        hasError = true;
+      }
+
+      if (!hasError) {
+        document.getElementById('successMessage').style.display = 'block';
+        document.getElementById('contactForm').reset();
+      }
+    }
+  </script>
+</body>
+</html>
