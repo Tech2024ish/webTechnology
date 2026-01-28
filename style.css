@@ -1,0 +1,161 @@
+*{
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+}
+header {
+    background-color: #2c3e50;
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+}
+nav {
+    background-color: #34495e;
+    text-align: center;
+    padding: 10px 0;
+}
+nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+}
+section {
+    padding: 40px 20px;
+}
+.course {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    margin-bottom: 50px;
+    padding: 20px;
+}
+.course-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.course-header img {
+    width: 80px;
+    height: 80px;
+    margin-right: 20px;
+}
+.course-header h3 {
+    margin: 0;
+}
+.tabs {
+    display: flex;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+.tab {
+    flex: 1;
+    padding: 10px;
+    background-color: #ecf0f1;
+    text-align: center;
+    border-radius: 5px 5px 0 0;
+    font-weight: bold;
+    user-select: none;
+    transition: background-color 0.3s ease;
+}
+.tab.active {
+    background-color: #2c3e50;
+    color: white;
+}
+.tab-content {
+    background-color: white;
+    border: 1px solid #ccc;
+    border-top: none;
+    padding: 20px;
+    border-radius: 0 0 10px 10px;
+}
+form {
+    max-width: 400px;
+    margin: auto;
+}
+form input {
+    width: 100%;
+    padding: 8px;
+    margin: 8px 0 4px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #2c3e50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+.error {
+    color: red;
+    font-size: 13px;
+    margin-bottom: 10px;
+    display: none;
+}
+.success {
+    color: green;
+    font-size: 14px;
+    margin-top: 10px;
+    text-align: center;
+    display: none;
+}
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #2c3e50;
+    color: white;
+    margin-top: 50px;
+}
+@media (max-width: 768px) {
+    nav a {
+    display: block;
+    margin: 10px 0;
+    }
+    .course-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    }
+    .course-header img {
+    margin-bottom: 10px;
+    }
+}
+
+form {
+    background: white;
+    padding: 20px;
+    max-width: 500px;
+    margin: auto;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+form input,
+form textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+form button {
+    background-color: #2c3e50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+}
